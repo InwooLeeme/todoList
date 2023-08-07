@@ -1,5 +1,6 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
+import ToDos from "./components/ToDoList";
 
 const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/
@@ -72,6 +73,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <ToDos />
     </>
   );
 }
