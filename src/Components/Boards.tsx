@@ -28,6 +28,7 @@ function Boards() {
   const DragEnd = (info: DropResult) => {
     console.log(info);
     const { destination, draggableId, source } = info;
+    if (!destination) return;
     // 같은 보드에서 움직이는 경우
     if (destination?.droppableId === source.droppableId) {
       setToDos((oldToDos) => {
@@ -37,6 +38,20 @@ function Boards() {
         return {
           ...oldToDos,
           [source.droppableId]: copyList,
+        };
+      });
+    } else if (destination.droppableId !== source.droppableId) {
+      // 서로 다른 보드들이 상호작용 하는 경우
+      setToDos((oldToDos) => {
+        const sourceBoard = [...oldToDos[source.droppableId]];
+        const destinationBoard = [...oldToDos[destination?.droppableId]];
+        sourceBoard.splice(source.index, 1); // 움직이는 아이템
+        destinationBoard.splice(destination.index, 0, draggableId); //
+        console.log(destinationBoard, sourceBoard);
+        return {
+          ...oldToDos,
+          [source.droppableId]: sourceBoard,
+          [destination.droppableId]: destinationBoard,
         };
       });
     }
