@@ -1,13 +1,12 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
-import ToDos from "./components/ToDoList";
+import Boards from "./Components/Boards";
 
 const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/
    v5.0.1 | 20191019
    License: none (public domain)
 */
-  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -55,11 +54,6 @@ const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  body{
-    font-family: 'Source Sans Pro', sans-serif;
-    background-color: ${(props) => props.theme.bgColor};
-    color: ${(props) => props.theme.txtColor};
-  }
   a{
     text-decoration: none;
     color:inherit;
@@ -73,7 +67,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ToDos />
+      <Boards />
     </>
   );
 }
